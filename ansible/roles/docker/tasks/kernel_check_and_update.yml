@@ -1,0 +1,17 @@
+---
+- name: Install kernel extras to make sure we have aufs
+  apt: name=linux-image-extra-`uname -r`
+
+- name: Reboot instance
+  command: /sbin/shutdown -r now
+  register: reboot_result
+
+- name: Wait for instance to come online (10 minute timeout)
+  sudo: false
+  local_action:
+    module: wait_for
+    host: "{{ ansible_ssh_host|default(inventory_hostname) }}"
+    port: "{{ ansible_ssh_port|default(ssh_port) }}"
+    delay: 30
+    timeout: 600
+    state: started
