@@ -3,7 +3,7 @@ vagrant-docker-ansible-lamp
 
 Unfinished Project
 
-##TODO
-    - Playbook
-        - Docker
-        - Shipyard
+### Write Ansible Playbooks
+
+- [ ] Docker install / Configuration
+- [ ] Shipyard setup
